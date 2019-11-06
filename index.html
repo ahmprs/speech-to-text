@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        Voice Command Assitance
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <button id="start-record-btn" title="Start Recording">Start Recognition</button>
+    <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button>
+    <br>
+    <h3>Raw:</h3>
+    <textarea id="note-textarea" rows="6" style="width:85%;"></textarea>
+    <br>
+    <h3>Command:</h3>
+    <textarea id="txt_cmd" rows="6" style="width:85%;"></textarea>
+    <br>
+    <h3>Code:</h3>
+    <textarea id="txt_code" rows="6" style="width:85%;"></textarea>
+    <br>
+    <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p>
+
+    <ul id="notes">
+        <li>
+            <p class="no-notes">You don't have any notes.</p>
+        </li>
+    </ul>
+
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+<script>
+    $(document).ready(function () {
+        auth();
+    });
+
+    function auth() {
+        $.post(
+            // server url
+            '../srv/srv.php',
+
+            // post parameters
+            {
+                func: 'fn_auth'
+            },
+
+            // server response
+            function (d, s) {
+                let r = d.trim();
+                if (r != '1') {
+                    window.location.replace('../login.html');
+                } else {
+
+                }
+            }
+        );
+    }
+</script>
+
+</html>
