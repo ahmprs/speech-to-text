@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
-        Voice Command Assitance
+        Voice Command Assistance
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,35 +31,7 @@
         </li>
     </ul>
 
-    <script src="./jquery-3.3.1.min.js"></script>
-    <script src="script.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/app.js"></script>
 </body>
-<script>
-    $(document).ready(function () {
-        auth();
-    });
-
-    function auth() {
-        $.post(
-            // server url
-            '../srv/srv.php',
-
-            // post parameters
-            {
-                func: 'fn_auth'
-            },
-
-            // server response
-            function (d, s) {
-                let r = d.trim();
-                if (r != '1') {
-                    window.location.replace('../login.html');
-                } else {
-
-                }
-            }
-        );
-    }
-</script>
-
 </html>
